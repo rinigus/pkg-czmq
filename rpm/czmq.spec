@@ -6,11 +6,12 @@ License: MPL
 Group: Libraries/Network
 URL: czmq.zeromq.org
 
-Source: https://github.com/zeromq/czmq/releases/download/v4.0.2/czmq-4.0.2.tar.gz
+#Source: https://github.com/zeromq/czmq/releases/download/v4.0.2/czmq-4.0.2.tar.gz
+Source: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: gcc libzmq-devel
-Requires: libzmq
+Requires: libzmq libtool
 
 %description
 High-level C binding for ØMQ
@@ -33,10 +34,12 @@ Requires: %{name} = %{version}
 The package provides command line tools to test basic operations of ZeroMQ
 
 %prep
-%setup
+%setup -q -n %{name}-%{version}/czmq
 
 %build
 %{__make} clean || true
+
+./autogen.sh
 
 CFLAGS="$CFLAGS -fPIC"
 CXXFLAGS="$CXXFLAGS -fPIC"
@@ -53,7 +56,9 @@ CXXFLAGS="$CXXFLAGS -fPIC"
 
 %pre
 
-%post
+%post -n czmq -p /sbin/ldconfig
+
+%postun -n czmq -p /sbin/ldconfig
 
 %files
 %files
