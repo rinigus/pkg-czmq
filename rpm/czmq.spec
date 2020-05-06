@@ -1,6 +1,6 @@
 Summary: High-level C binding for ØMQ
 Name: czmq
-Version: 4.0.2
+Version: 4.1.1
 Release: 1%{?dist}
 License: MPL
 Group: Libraries/Network
