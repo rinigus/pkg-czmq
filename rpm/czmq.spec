@@ -1,4 +1,4 @@
-Summary: High-level C binding for ØMQ
+Summary: High-level C binding for Ã˜MQ
 Name: czmq
 Version: 4.1.1
 Release: 1%{?dist}
@@ -14,7 +14,7 @@ BuildRequires: gcc libzmq-devel
 Requires: libzmq libtool
 
 %description
-High-level C binding for ØMQ
+High-level C binding for Ã˜MQ
 
 %package devel
 Summary: CZMQ development headers
